@@ -36,5 +36,5 @@ check package
 Get credentials
 
  acces ovh container
- acces scalway
+ acces scaleway
 
