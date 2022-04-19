@@ -45,7 +45,7 @@ RUN apt-get -q update &&\
 ### PYTHON
 
 RUN python3 -m pip install --upgrade pip==22.0.4 \
-    && pip3 install python-swiftclient==3.12.0 \
+    && pip3 install python-swiftclient==3.12.0 python-keystoneclient==4.4.0 \
     && pip3 --version && python3 --version
 
 USER postgres
