@@ -20,7 +20,8 @@ RUN set -x \
     gzip \
     ssmtp \
     s3cmd \
-    python3-pip \
+    python3-swiftclient \
+#    python3-pip \
     vim \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -44,13 +45,16 @@ RUN apt-get -q update &&\
 
 ### PYTHON
 
-RUN python3 -m pip install --upgrade pip==22.0.4 \
-    && pip3 install python-swiftclient==3.12.0 python-keystoneclient==4.4.0 \
-    && pip3 --version && python3 --version
-
 USER postgres
 
+#RUN python3 -m pip install --upgrade pip==22.0.4 \
+#    && pip3 install python-swiftclient==3.12.0 python-keystoneclient==4.4.0 \
+#    && pip3 --version && python3 --version
+
 RUN psql --version
+RUN swift --version
+RUN s3cmd --version
+RUN gpg2 --version
 
 WORKDIR /tmp
 

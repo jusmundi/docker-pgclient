@@ -20,18 +20,18 @@ docker build --network=host -t "${DOCKER_ORGANISATION}/pgclient:0.0.1" .
 docker push "${DOCKER_ORGANISATION}/pgclient:0.0.1"
 ```
 
-### TODO
+### Check docker image quality
 
+```bash
+```
+
+### TODO
 
   postgre 14 -> alertapi
 
   postgre 10 -> back --> to migrate
 
   postgre 12 -> scraper --> 2 bases to migrate
-
-check package
-
- find
 
 Get credentials
 
