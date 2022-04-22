@@ -9,6 +9,7 @@
     "package-lock.json",
     "requirements.txt",
     "roles/**",
+    ".github/**",
     "report"
   ],
   "words": [

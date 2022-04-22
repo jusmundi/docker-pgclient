@@ -14,6 +14,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN set -x \
 	&& apt-get update && apt-get --no-install-recommends install -y \
     ca-certificates \
+    pinentry-tty \
     curl \
     gnupg gnupg2 \
     lsb-release \
@@ -24,7 +25,7 @@ RUN set -x \
     vim \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
+RUN apt-get update && apt-get install --no-install-recommends -y locales && rm -rf /var/lib/apt/lists/* \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 ENV LANG en_US.utf8
 
@@ -37,8 +38,7 @@ RUN curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add 
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main $PG_MAJOR" > /etc/apt/sources.list.d/pgdg.list
 
 # hadolint ignore=DL3008
-RUN apt-get -q update &&\
-    apt-get -q -o Dpkg::Options::="--force-confnew" --no-install-recommends install -y \
+RUN apt-get -q update && apt-get -q -o Dpkg::Options::="--force-confnew" --no-install-recommends install -y \
     postgresql-client-10 postgresql-client-12 postgresql-client-$PG_MAJOR \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -48,8 +48,11 @@ RUN psql --version
 RUN swift --version
 RUN s3cmd --version
 RUN gpg2 --version
+RUN gpg2 -K
 
 WORKDIR /tmp
+
+COPY gpg-agent.conf --chown=postgres:postgres /home/postgres/.gnupg/gpg-agent.conf
 
 CMD ["/bin/bash"]
 HEALTHCHECK NONE

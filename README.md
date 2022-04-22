@@ -1,4 +1,4 @@
-## [![JusMundi](https://jusmundi.com/_nuxt/img/ec6242d.gif)](https://gitlab.com/jusmundi-group/web/infrastructure/-/tree/master) docker image with postgresql client for backup
+## [![JusMundi](https://drive.google.com/file/d/1Z0llaWuGMjr3NBfxIrA_yE0ysg1TFXBk/view?usp=sharing)](https://gitlab.com/jusmundi-group/web/infrastructure/) docker image with postgresql client for backup
 
 1. connect postgressql db
 2. encrypt dump
@@ -31,6 +31,7 @@ Code is [jusmundi/pgclient](https://github.com/jusmundi/docker-pgclient)
 ```bash
 export DOCKER_ORGANISATION=${DOCKER_ORGANISATION:-"jusmundi"}
 docker build --network=host -t "${DOCKER_ORGANISATION}/pgclient:0.0.1" .
+docker run -ti "${DOCKER_ORGANISATION}/pgclient:0.0.1" bash
 docker push "${DOCKER_ORGANISATION}/pgclient:0.0.1"
 ```
 
