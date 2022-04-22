@@ -44,15 +44,29 @@ RUN apt-get -q update && apt-get -q -o Dpkg::Options::="--force-confnew" --no-in
 
 USER postgres
 
+RUN gpg2 --version
+RUN gpg2 -K
+RUN id
+
+USER root
+
+RUN ls -lrta /home/postgres/
+#RUN mkdir /home/postgres/.gnupg
+#RUN chown postgres:postgres /home/postgres/.gnupg
+RUN ls -lrta /home/postgres/.gnupg
+
+#ADD gpg-agent.conf --chown=postgres:postgres /home/postgres/.gnupg/gpg-agent.conf
+ADD gpg-agent.conf /home/postgres/.gnupg/gpg-agent.conf
+RUN chown postgres:postgres /home/postgres/.gnupg/gpg-agent.conf
+
+USER postgres
+
 RUN psql --version
 RUN swift --version
 RUN s3cmd --version
-RUN gpg2 --version
 RUN gpg2 -K
 
 WORKDIR /tmp
-
-COPY gpg-agent.conf --chown=postgres:postgres /home/postgres/.gnupg/gpg-agent.conf
 
 CMD ["/bin/bash"]
 HEALTHCHECK NONE
