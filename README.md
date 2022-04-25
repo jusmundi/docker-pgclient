@@ -8,17 +8,11 @@
 
 <!-- toc -->
 
-- [Table of contents](#table-of-contents)
-  - [Backup](#backup)
-    - [Create docker backup postgresql client image](#create-docker-backup-postgresql-client-image)
-    - [Check docker image quality](#check-docker-image-quality)
-      - [Docker dive](#docker-dive)
-      - [Docker linter](#docker-linter)
-      - [mega-linter](#mega-linter)
-      - [Check secret](#check-secret)
-      - [Check cspell](#check-cspell)
-    - [Update README.md](#update-readmemd)
-    - [TODO postgresql migration](#todo-postgresql-migration)
+- [Backup](#backup)
+  * [Create docker backup postgresql client image](#create-docker-backup-postgresql-client-image)
+  * [Check docker image quality](#check-docker-image-quality)
+  * [Update README.md](#update-readmemd)
+  * [TODO postgresql migration](#todo-postgresql-migration)
 
 <!-- tocstop -->
 
@@ -93,4 +87,3 @@ markdown-toc CHANGELOG.md -i
   postgresql 10 -> back --> to migrate
 
   postgresql 12 -> scraper --> 2 bases to migrate
-

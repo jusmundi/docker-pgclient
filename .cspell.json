@@ -10,6 +10,7 @@
     "requirements.txt",
     "roles/**",
     ".github/**",
+    "Dockerfile(-.+)?",
     "report"
   ],
   "words": [
@@ -29,4 +30,14 @@
     "alertapi",
     "scaleway"
   ],
+	"languageSettings": [
+		{
+			"languageId": "markdown",
+			"caseSensitive": true
+		},
+		{
+			"languageId": "javascript",
+			"caseSensitive": false
+		}
+	]
 }
