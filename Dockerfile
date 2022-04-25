@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.2.1
 
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 

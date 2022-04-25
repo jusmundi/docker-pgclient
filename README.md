@@ -8,11 +8,17 @@
 
 <!-- toc -->
 
-- [Backup](#backup)
-  * [Create docker backup postgresql client image](#create-docker-backup-postgresql-client-image)
-  * [Check docker image quality](#check-docker-image-quality)
-  * [Update README.md](#update-readmemd)
-  * [TODO postgresql migration](#todo-postgresql-migration)
+- [Table of contents](#table-of-contents)
+  - [Backup](#backup)
+    - [Create docker backup postgresql client image](#create-docker-backup-postgresql-client-image)
+    - [Check docker image quality](#check-docker-image-quality)
+      - [Docker dive](#docker-dive)
+      - [Docker linter](#docker-linter)
+      - [mega-linter](#mega-linter)
+      - [Check secret](#check-secret)
+      - [Check cspell](#check-cspell)
+    - [Update README.md](#update-readmemd)
+    - [TODO postgresql migration](#todo-postgresql-migration)
 
 <!-- tocstop -->
 
@@ -24,9 +30,9 @@ Code is [jusmundi/pgclient](https://github.com/jusmundi/docker-pgclient)
 
 ```bash
 export DOCKER_ORGANISATION=${DOCKER_ORGANISATION:-"jusmundi"}
-docker build --network=host -t "${DOCKER_ORGANISATION}/pgclient:0.0.1" .
-docker run -ti "${DOCKER_ORGANISATION}/pgclient:0.0.1" bash
-docker push "${DOCKER_ORGANISATION}/pgclient:0.0.1"
+docker build --network=host -t "${DOCKER_ORGANISATION}/pgclient:0.1.0" --squash .
+docker run -ti "${DOCKER_ORGANISATION}/pgclient:0.1.0" bash
+docker push "${DOCKER_ORGANISATION}/pgclient:0.1.0"
 ```
 
 Image uploaded to [jusmundi/pgclient](https://hub.docker.com/r/jusmundi/pgclient/tags)
@@ -36,7 +42,7 @@ Image uploaded to [jusmundi/pgclient](https://hub.docker.com/r/jusmundi/pgclient
 #### Docker dive
 
 ```bash
-dive --ci --json docker-dive-stats.json "${DOCKER_ORGANISATION}/pgclient:0.0.1" 1>docker-dive.log 2>docker-dive-error.log
+dive --ci --json docker-dive-stats.json "${DOCKER_ORGANISATION}/pgclient:0.1.0" 1>docker-dive.log 2>docker-dive-error.log
 ```
 
 #### Docker linter
