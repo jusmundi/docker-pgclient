@@ -40,9 +40,10 @@ RUN curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add 
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main $PG_MAJOR" > /etc/apt/sources.list.d/pgdg.list
 
 # hadolint ignore=DL3008
-RUN apt-get -q update && apt-get -q -o Dpkg::Options::="--force-confnew" --no-install-recommends install -y \
-    postgresql-client-10 postgresql-client-12 postgresql-client-$PG_MAJOR \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN set -x \
+	&& apt-get update && apt-get --no-install-recommends install -y \
+	postgresql-client-10 postgresql-client-12 postgresql-client-$PG_MAJOR \
+	&& apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER postgres
 

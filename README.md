@@ -1,3 +1,4 @@
+<!-- markdown-link-check-disable-next-line -->
 ## [![JusMundi](https://media-exp1.licdn.com/dms/image/C4D0BAQFkFSDZh9uBpg/company-logo_200_200/0/1519903803617?e=2147483647&v=beta&t=wAWk1qgiv69WUS_PyOx-7apQTDnJXvBnvMCBmqO9Tew)](https://gitlab.com/jusmundi-group/web/infrastructure/) docker image with postgresql client for backup
 
 1. connect postgresql db
@@ -79,6 +80,8 @@ npx cspell "**/*.{txt,js,md}"
 sudo npm install -g markdown-toc
 markdown-toc README.md -i
 markdown-toc CHANGELOG.md -i
+sudo npm install -g markdown-link-check
+markdown-link-check ./README.md
 ```
 
 ### TODO postgresql migration
