@@ -1,11 +1,10 @@
 {
-  "version": "0.1",
-  "language": "en",
   "ignorePaths": [
     "**/node_modules/**",
     "**/vscode-extension/**",
     "**/.git/**",
     ".vscode",
+    "megalinter",
     "package-lock.json",
     "requirements.txt",
     "roles/**",
@@ -13,6 +12,8 @@
     "Dockerfile(-.+)?",
     "report"
   ],
+  "language": "en",
+  "noConfigSearch": true,
   "words": [
     "Andrieu",
     "Alban",
@@ -28,16 +29,19 @@
     "hadolint",
     "readmemd",
     "alertapi",
+    "postgresql",
+    "secretlint",
     "scaleway"
   ],
-	"languageSettings": [
-		{
-			"languageId": "markdown",
-			"caseSensitive": true
-		},
-		{
-			"languageId": "javascript",
-			"caseSensitive": false
-		}
-	]
+  "languageSettings": [
+  {
+    "languageId": "markdown",
+    "caseSensitive": true
+  },
+  {
+    "languageId": "javascript",
+    "caseSensitive": false
+  }
+  ],
+  "version": "0.2"
 }

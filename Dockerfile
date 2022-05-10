@@ -74,4 +74,4 @@ CMD ["/bin/bash"]
 HEALTHCHECK NONE
 
 # dockerfile_lint - ignore
-EXPOSE []
+EXPOSE 80
