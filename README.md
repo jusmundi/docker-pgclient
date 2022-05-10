@@ -7,6 +7,10 @@
 
 # Table of contents
 
+<!-- markdown-link-check-disable -->
+
+// spell-checker:disable
+
 <!-- toc -->
 
 - [Backup](#backup)
@@ -16,6 +20,10 @@
   * [TODO postgresql migration](#todo-postgresql-migration)
 
 <!-- tocstop -->
+
+// spell-checker:enable
+
+<!-- markdown-link-check-enable -->
 
 ## Backup
 
