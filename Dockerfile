@@ -4,7 +4,6 @@ FROM ubuntu:22.04
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# dockerfile_lint - ignore
 LABEL name="pgclient" version="0.0.1"
 
 # explicitly set user/group IDs
@@ -73,3 +72,6 @@ WORKDIR /tmp
 
 CMD ["/bin/bash"]
 HEALTHCHECK NONE
+
+# dockerfile_lint - ignore
+EXPOSE []
