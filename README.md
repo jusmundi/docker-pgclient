@@ -1,4 +1,4 @@
-## [![JusMundi](https://drive.google.com/file/d/1Z0llaWuGMjr3NBfxIrA_yE0ysg1TFXBk/view?usp=sharing)](https://gitlab.com/jusmundi-group/web/infrastructure/) docker image with postgresql client for backup
+## [![JusMundi](https://media-exp1.licdn.com/dms/image/C4D0BAQFkFSDZh9uBpg/company-logo_200_200/0/1519903803617?e=2147483647&v=beta&t=wAWk1qgiv69WUS_PyOx-7apQTDnJXvBnvMCBmqO9Tew)](https://gitlab.com/jusmundi-group/web/infrastructure/) docker image with postgresql client for backup
 
 1. connect postgressql db
 2. encrypt dump
@@ -8,17 +8,11 @@
 
 <!-- toc -->
 
-- [Table of contents](#table-of-contents)
-  - [Backup](#backup)
-    - [Create docker backup postgresql client image](#create-docker-backup-postgresql-client-image)
-    - [Check docker image quality](#check-docker-image-quality)
-      - [Docker dive](#docker-dive)
-      - [Docker linter](#docker-linter)
-      - [mega-linter](#mega-linter)
-      - [Check secret](#check-secret)
-      - [Check cspell](#check-cspell)
-    - [Update README.md](#update-readmemd)
-    - [TODO postgresql migration](#todo-postgresql-migration)
+- [Backup](#backup)
+  * [Create docker backup postgresql client image](#create-docker-backup-postgresql-client-image)
+  * [Check docker image quality](#check-docker-image-quality)
+  * [Update README.md](#update-readmemd)
+  * [TODO postgresql migration](#todo-postgresql-migration)
 
 <!-- tocstop -->
 
