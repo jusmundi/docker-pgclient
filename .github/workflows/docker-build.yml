@@ -38,7 +38,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-     - name: get-name
+      - name: get-name
         run: |
             echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
       - name: print-name
