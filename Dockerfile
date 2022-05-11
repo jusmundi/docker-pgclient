@@ -4,9 +4,9 @@ FROM ubuntu:22.04
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-LABEL name="pgclient" version="0.0.1"
+LABEL name="pgclient" version="0.1.0"
 
-# explicitly set user/group IDs
+# Explicitly set user/group IDs
 RUN groupadd -r postgres --gid=999 && useradd -m -r -g postgres --uid=999 postgres
 
 # No interactive frontend during docker build
@@ -54,8 +54,6 @@ RUN id
 USER root
 
 RUN ls -lrta /home/postgres/
-#RUN mkdir /home/postgres/.gnupg
-#RUN chown postgres:postgres /home/postgres/.gnupg
 RUN ls -lrta /home/postgres/.gnupg
 
 #ADD gpg-agent.conf --chown=postgres:postgres /home/postgres/.gnupg/gpg-agent.conf

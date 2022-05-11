@@ -30,9 +30,9 @@ jobs:
       - name: Install Node.Js
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
 
-      - name: Install bower
+      - name: Install npm package
         run: npm install -g markdown-toc@latest secretlint@latest
 
       - name: Set up Docker Buildx
@@ -44,18 +44,35 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Login to Github Packages
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          #password: ${{ secrets.GHCR_PAT }}  # ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build and push debug
-        run: echo "docker push ${{ env.OWNER }}/pgclient:latest,${{ github.event.repository.name }}:${{ github.sha }}"
+        run: echo "docker push ${{ env.OWNER }}/pgclient:latest,${{ github.repository }}:${{ github.sha }}"
 
       - name: Build and push
         id: docker_build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
-          context: .
-          push: true
-          #tags: ${{ github.event.repository.name }}/pgclient:latest,${{ github.event.repository.name }}/pgclient:${{ github.sha }}
+          #context: .
           #tags: ${{ github.event.repository.name }}/pgclient:latest,${{ env.OWNER }}/pgclient:latest
-          tags: ${{ env.OWNER }}/pgclient:latest
+          tags: |
+            ${{ env.OWNER }}/pgclient:latest
+            ghcr.io/${{ env.OWNER }}/pgclient:latest
+          build-args: |
+              PG_MAJOR=14
+              BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+              GIT_SHA=${GITHUB_SHA::8}
+          # build on feature branches, push only on main branch
+          push: ${{ github.ref == 'refs/heads/main' }}
+
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
@@ -74,3 +91,9 @@ jobs:
         uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: "trivy-results.sarif"
+
+      - name: Print the GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
