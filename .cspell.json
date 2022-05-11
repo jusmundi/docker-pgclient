@@ -47,6 +47,8 @@
     "vuln",
     "secretlint",
     "Buildx",
+    "gitlab",
+    "jenkins",
     "Jenkinsfile",
     "graphviz",
     "ngdoc",
