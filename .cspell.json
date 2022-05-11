@@ -1,21 +1,35 @@
 {
-  "version": "0.1",
-  "language": "en",
   "ignorePaths": [
     "**/node_modules/**",
+    "**/bower_components/**",
     "**/vscode-extension/**",
     "**/.git/**",
+    ".gitignore",
     ".vscode",
+    "megalinter",
     "package-lock.json",
-    "requirements.txt",
+    "requirements*.txt",
+    "target/**",
+    "dist/**",
+    "test/**",
     "roles/**",
     ".github/**",
+    ".gitlab/**",
+    "**/examples/**",
     "Dockerfile(-.+)?",
+    ".jscpd.json",
+    ".mega-linter.yml",
+    ".yamllint",
+    ".pre-commit-config.yaml",
+    "LICENSE",
     "report"
   ],
+  "language": "en",
+  "noConfigSearch": true,
   "words": [
     "Andrieu",
     "Alban",
+    "Nabla",
     "albandri",
     "albandrieu",
     "virtualenv",
@@ -24,20 +38,37 @@
     "jusmundi",
     "Mundi",
     "ORGANISATION",
-    "pgclient",
+    "stefanzweifel",
     "hadolint",
     "readmemd",
+    "codeql",
+    "aquasecurity",
+    "Trivy",
+    "sarif",
+    "vuln",
+    "secretlint",
+    "Buildx",
+    "gitlab",
+    "jenkins",
+    "Jenkinsfile",
+    "graphviz",
+    "ngdoc",
+    "lastspace",
+    "navitem",
+    "postgresql",
+    "pgclient",
     "alertapi",
     "scaleway"
   ],
-	"languageSettings": [
-		{
-			"languageId": "markdown",
-			"caseSensitive": true
-		},
-		{
-			"languageId": "javascript",
-			"caseSensitive": false
-		}
-	]
+  "languageSettings": [
+    {
+      "languageId": "markdown",
+      "caseSensitive": true
+    },
+    {
+      "languageId": "javascript",
+      "caseSensitive": false
+    }
+  ],
+  "version": "0.2"
 }
