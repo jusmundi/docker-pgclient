@@ -1,8 +1,0 @@
-Results of v8r linter (version 0.6.1)
-See documentation on https://megalinter.github.io/descriptors/yaml_v8r/
------------------------------------------------
-
-✅ [SUCCESS] .github/workflows/docker-build.yml
-✅ [SUCCESS] .gitlab-ci.yml
-✅ [SUCCESS] .mega-linter.yml
-✅ [SUCCESS] .pre-commit-config.yaml
