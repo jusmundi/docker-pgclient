@@ -1,8 +1,10 @@
 # Changelog
 
+<!-- markdown-link-check-disable -->
+
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 # Table of contents
@@ -66,3 +68,5 @@ Ubuntu 20.04
 - None
 
 `docker run -it -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro -v /var/run/docker.sock:/var/run/docker.sock --entrypoint /bin/bash jusmundi/pgclient:0.1.0`
+
+<!-- markdown-link-check-enable -->
