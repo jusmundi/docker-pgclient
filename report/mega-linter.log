@@ -1,0 +1,275 @@
+----------------------------------------------------------------------------------------------------
+-------------------------------------------- MegaLinter --------------------------------------------
+----------------------------------------------------------------------------------------------------
+ - Image Creation Date: 2022-04-23T07:14:26Z
+ - Image Revision: 10b62f81a
+ - Image Version: v5
+----------------------------------------------------------------------------------------------------
+The MegaLinter documentation can be found at:
+ - https://megalinter.github.io
+----------------------------------------------------------------------------------------------------
+GITHUB_REPOSITORY: jusmundi/docker-pgclient
+GITHUB_REF: refs/pull/1/merge
+GITHUB_RUN_ID: 2306098026
+
+
+[Activation] EDITORCONFIG_EDITORCONFIG_CHECKER has been set inactive, as none of these files has been found: ['.editorconfig']
+[Activation] JAVASCRIPT_ES has been set inactive, as none of these files has been found: ['.eslintrc.json', '.eslintrc.yml', '.eslintrc.yaml', '.eslintrc.js', '.eslintrc.cjs', 'package.json:eslintConfig']
+[Activation] JSX_ESLINT has been set inactive, as none of these files has been found: ['.eslintrc.json', '.eslintrc.yml', '.eslintrc.yaml', '.eslintrc.js', '.eslintrc.cjs', 'package.json:eslintConfig']
+[Activation] SQL_SQLFLUFF has been set inactive, as none of these files has been found: ['.sqlfluff']
+[Activation] SWIFT_SWIFTLINT has been set inactive, as none of these files has been found: ['.swiftlint.yml']
+[Activation] TSX_ESLINT has been set inactive, as none of these files has been found: ['.eslintrc.json', '.eslintrc.yml', '.eslintrc.yaml', '.eslintrc.js', '.eslintrc.cjs', 'package.json:eslintConfig']
+[Activation] TYPESCRIPT_ES has been set inactive, as none of these files has been found: ['.eslintrc.json', '.eslintrc.yml', '.eslintrc.yaml', '.eslintrc.js', '.eslintrc.cjs', 'package.json:eslintConfig']
+RST_RSTFMT has been temporary disabled in MegaLinter, please use a previous MegaLinter version or wait for the next one !
+Skipped linters: ANSIBLE_ANSIBLE_LINT, DOCKERFILE_HADOLINT, EDITORCONFIG_EDITORCONFIG_CHECKER, JAVASCRIPT_ES, JAVASCRIPT_PRETTIER, JSX_ESLINT, KUBERNETES_KUBECONFORM, KUBERNETES_KUBEVAL, MARKDOWN_REMARK_LINT, RST_RSTFMT, SALESFORCE_SFDX_SCANNER_APEX, SALESFORCE_SFDX_SCANNER_AURA, SALESFORCE_SFDX_SCANNER_LWC, SQL_SQLFLUFF, SWIFT_SWIFTLINT, TSX_ESLINT, TYPESCRIPT_ES, TYPESCRIPT_PRETTIER
+To receive reports as email, please set variable EMAIL_REPORTER_EMAIL
+Listing updated files in [/github/workspace] using git diff.
+Modified files:
+.c8rc
+.cspell.json
+.dockerignore
+.github/workflows/docker-build.yml
+.gitlab-ci.yml
+.jscpd.json
+.mega-linter.yml
+.pre-commit-config.yaml
+.yamllint
+CHANGELOG.md
+Dockerfile
+README.md
+- File extensions: , .R, .RMD, .Rmd, .bash, .c, .c++, .cc, .cdxml, .clj, .cljc, .cljs, .coffee, .cpp, .cs, .css, .cu, .cuh, .cxx, .dart, .dash, .edn, .env, .feature, .go, .gradle, .graphql, .groovy, .gvy, .h, .h++, .hcl, .hh, .hpp, .htm, .html, .hxx, .java, .js, .json, .json5, .jsonc, .ksh, .kt, .kts, .lua, .md, .nf, .p6, .php, .pl, .pl6, .pm, .pm6, .pp, .proto, .ps1, .ps1xml, .psd1, .psm1, .psrc, .pssc, .py, .r, .raku, .rakumod, .rakutest, .rb, .rs, .rst, .saas, .scala, .scss, .sh, .smk, .sql, .t, .tex, .tf, .ts, .vb, .xml, .yaml, .yml
+- File names (regex): Dockerfile, Jenkinsfile, Snakefile
+- Excluding .gitignored files [0]: 
+Kept [12] files on [12] found files
+
++----MATCHING LINTERS--------------------+---------------------+----------------+------------+
+| Descriptor  | Linter                   | Criteria            | Matching files | Format/Fix |
++-------------+--------------------------+---------------------+----------------+------------+
+| ACTION      | actionlint               | .yml|.yaml          | 1              | no         |
+| COPYPASTE   | jscpd                    |                     | project        | no         |
+| CREDENTIALS | secretlint               |                     | project        | no         |
+| DOCKERFILE  | dockerfilelint           | Dockerfile          | 1              | no         |
+| GIT         | git_diff                 |                     | project        | no         |
+| JSON        | jsonlint                 | .json               | 2              | no         |
+| JSON        | eslint-plugin-jsonc      | .json|.json5|.jsonc | 2              | yes        |
+| JSON        | v8r                      | .json               | 2              | no         |
+| JSON        | prettier                 | .json               | 2              | yes        |
+| MARKDOWN    | markdownlint             | .md                 | 2              | yes        |
+| MARKDOWN    | markdown-link-check      | .md                 | 2              | no         |
+| MARKDOWN    | markdown-table-formatter | .md                 | 2              | yes        |
+| SPELL       | misspell                 |                     | 12             | yes        |
+| SPELL       | cspell                   |                     | 12             | no         |
+| YAML        | prettier                 | .yml|.yaml          | 4              | yes        |
+| YAML        | yamllint                 | .yml|.yaml          | 4              | no         |
+| YAML        | v8r                      | .yml|.yaml          | 4              | no         |
++-------------+--------------------------+---------------------+----------------+------------+
+
+
+[1m### Processed [ACTION] files[0m
+- Using [actionlint v1.6.12] https://megalinter.github.io/v5/descriptors/action_actionlint
+- MegaLinter key: [ACTION_ACTIONLINT]
+- Rules config: identified by [actionlint]
+[actionlint] .github/workflows/docker-build.yml
+[32m✅ Linted [ACTION] files with [actionlint] successfully - (0.03s)[0m
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-ACTION_ACTIONLINT.log
+
+[1m### Processed [CREDENTIALS] files[0m
+- Using [secretlint v4.1.0] https://megalinter.github.io/v5/descriptors/credentials_secretlint
+- MegaLinter key: [CREDENTIALS_SECRETLINT]
+- Rules config: [/github/workspace/.secretlintrc.json]
+[32m✅ Linted [CREDENTIALS] files with [secretlint] successfully - (0.88s)[0m
+
+[1m### Processed [COPYPASTE] files[0m
+- Using [jscpd v3.3.26] https://megalinter.github.io/v5/descriptors/copypaste_jscpd
+- MegaLinter key: [COPYPASTE_JSCPD]
+- Rules config: [/github/workspace/.jscpd.json]
+[32m✅ Linted [COPYPASTE] files with [jscpd] successfully - (1.16s)[0m
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-CREDENTIALS_SECRETLINT.log
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-COPYPASTE_JSCPD.log
+
+[1m### Processed [GIT] files[0m
+- Using [git_diff v2.30.3] https://megalinter.github.io/v5/descriptors/git_git_diff
+- MegaLinter key: [GIT_GIT_DIFF]
+- Rules config: identified by [git_diff]
+[32m✅ Linted [GIT] files with [git_diff] successfully - (0.0s)[0m
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-GIT_GIT_DIFF.log
+
+[1m### Processed [DOCKERFILE] files[0m
+- Using [dockerfilelint v1.8.0] https://megalinter.github.io/v5/descriptors/dockerfile_dockerfilelint
+- MegaLinter key: [DOCKERFILE_DOCKERFILELINT]
+- Rules config: [/github/workspace/.dockerfilelintrc]
+[dockerfilelint] Dockerfile - SUCCESS - 0 error(s)
+[32m✅ Linted [DOCKERFILE] files with [dockerfilelint] successfully - (0.25s)[0m
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-DOCKERFILE_DOCKERFILELINT.log
+
+[1m### Processed [JSON] files[0m
+- Using [jsonlint v1.6.3] https://megalinter.github.io/v5/descriptors/json_jsonlint
+- MegaLinter key: [JSON_JSONLINT]
+- Rules config: identified by [jsonlint]
+[jsonlint] .cspell.json - SUCCESS - 0 error(s)
+[jsonlint] .jscpd.json - SUCCESS - 0 error(s)
+[32m✅ Linted [JSON] files with [jsonlint] successfully - (0.45s)[0m
+
+[1m### Processed [MARKDOWN] files[0m
+- Using [markdownlint v0.31.1] https://megalinter.github.io/v5/descriptors/markdown_markdownlint
+- MegaLinter key: [MARKDOWN_MARKDOWNLINT]
+- Rules config: [.markdownlint.json]
+[36m[markdownlint] CHANGELOG.md - FIXED[0m
+[markdownlint] README.md
+--Error detail:
+/github/workspace/CHANGELOG.md:10 MD025/single-title/single-h1 Multiple top-level headings in the same document [Context: "# Table of contents"]
+/github/workspace/CHANGELOG.md:30 MD001/heading-increment/header-increment Heading levels should only increment by one level at a time [Expected: h2; Actual: h3]
+/github/workspace/CHANGELOG.md:61 MD024/no-duplicate-heading/no-duplicate-header Multiple headings with the same content [Context: "### Updated"]
+/github/workspace/README.md:2 MD041/first-line-heading/first-line-h1 First line in a file should be a top-level heading [Context: "## [![JusMundi](https://media-..."]
+/github/workspace/README.md:73 MD040/fenced-code-language Fenced code blocks should have a language specified [Context: "```"]
+/github/workspace/README.md:79 MD040/fenced-code-language Fenced code blocks should have a language specified [Context: "```"]
+/github/workspace/README.md:88 MD040/fenced-code-language Fenced code blocks should have a language specified [Context: "```"]
+
+[33m✅ Linted [MARKDOWN] files with [markdownlint]: Found 7 non blocking error(s) - (0.34s)[0m
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-JSON_JSONLINT.log
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/WARNING-MARKDOWN_MARKDOWNLINT.log
+
+[1m### Processed [MARKDOWN] files[0m
+- Using [markdown-link-check v3.10.0] https://megalinter.github.io/v5/descriptors/markdown_markdown_link_check
+- MegaLinter key: [MARKDOWN_MARKDOWN_LINK_CHECK]
+- Rules config: [.markdown-link-check.json]
+[markdown-link-check] CHANGELOG.md
+[markdown-link-check] README.md
+[32m✅ Linted [MARKDOWN] files with [markdown-link-check] successfully - (0.77s)[0m
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-MARKDOWN_MARKDOWN_LINK_CHECK.log
+
+[1m### Processed [MARKDOWN] files[0m
+- Using [markdown-table-formatter v1.3.0] https://megalinter.github.io/v5/descriptors/markdown_markdown_table_formatter
+- MegaLinter key: [MARKDOWN_MARKDOWN_TABLE_FORMATTER]
+- Rules config: identified by [markdown-table-formatter]
+[36m[markdown-table-formatter] CHANGELOG.md - FIXED[0m
+[markdown-table-formatter] README.md
+[32m✅ Linted [MARKDOWN] files with [markdown-table-formatter] successfully - (0.32s)[0m
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-MARKDOWN_MARKDOWN_TABLE_FORMATTER.log
+
+[1m### Processed [SPELL] files[0m
+- Using [misspell v0.3.4] https://megalinter.github.io/v5/descriptors/spell_misspell
+- MegaLinter key: [SPELL_MISSPELL]
+- Rules config: identified by [misspell]
+[misspell] .c8rc
+[misspell] .cspell.json
+[misspell] .dockerignore
+[misspell] .github/workflows/docker-build.yml
+[misspell] .gitlab-ci.yml
+[misspell] .jscpd.json
+[misspell] .mega-linter.yml
+[misspell] .pre-commit-config.yaml
+[misspell] .yamllint
+[36m[misspell] CHANGELOG.md - FIXED[0m
+[misspell] Dockerfile
+[misspell] README.md
+[32m✅ Linted [SPELL] files with [misspell] successfully - (0.06s)[0m
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-SPELL_MISSPELL.log
+
+[1m### Processed [SPELL] files[0m
+- Using [cspell v5.19.7] https://megalinter.github.io/v5/descriptors/spell_cspell
+- MegaLinter key: [SPELL_CSPELL]
+- Rules config: [/github/workspace/.cspell.json]
+[cspell] .c8rc
+[cspell] .cspell.json
+[cspell] .dockerignore
+[cspell] .github/workflows/docker-build.yml
+[cspell] .gitlab-ci.yml
+[cspell] .jscpd.json
+[cspell] .mega-linter.yml
+[cspell] .pre-commit-config.yaml
+[cspell] .yamllint
+[cspell] CHANGELOG.md
+[cspell] Dockerfile
+[cspell] README.md
+[32m✅ Linted [SPELL] files with [cspell] successfully - (1.83s)[0m
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-SPELL_CSPELL.log
+
+[1m### Processed [JSON] files[0m
+- Using [eslint-plugin-jsonc v2.2.1] https://megalinter.github.io/v5/descriptors/json_eslint_plugin_jsonc
+- MegaLinter key: [JSON_ESLINT_PLUGIN_JSONC]
+- Rules config: [.eslintrc-json.json]
+[eslint-plugin-jsonc] .cspell.json
+[eslint-plugin-jsonc] .jscpd.json
+[32m✅ Linted [JSON] files with [eslint-plugin-jsonc] successfully - (0.95s)[0m
+
+[1m### Processed [YAML] files[0m
+- Using [prettier v2.6.2] https://megalinter.github.io/v5/descriptors/yaml_prettier
+- MegaLinter key: [YAML_PRETTIER]
+- Rules config: identified by [prettier]
+[prettier] .github/workflows/docker-build.yml
+[prettier] .gitlab-ci.yml
+[36m[prettier] .mega-linter.yml - FIXED[0m
+[prettier] .pre-commit-config.yaml
+[32m✅ Linted [YAML] files with [prettier] successfully - (1.13s)[0m
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-JSON_ESLINT_PLUGIN_JSONC.log
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-YAML_PRETTIER.log
+
+[1m### Processed [YAML] files[0m
+- Using [yamllint v1.26.3] https://megalinter.github.io/v5/descriptors/yaml_yamllint
+- MegaLinter key: [YAML_YAMLLINT]
+- Rules config: [.yamllint.yml]
+[yamllint] .github/workflows/docker-build.yml
+[yamllint] .gitlab-ci.yml
+[yamllint] .mega-linter.yml
+[yamllint] .pre-commit-config.yaml
+[32m✅ Linted [YAML] files with [yamllint] successfully - (0.18s)[0m
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-YAML_YAMLLINT.log
+
+[1m### Processed [JSON] files[0m
+- Using [v8r v0.6.1] https://megalinter.github.io/v5/descriptors/json_v8r
+- MegaLinter key: [JSON_V8R]
+- Rules config: identified by [v8r]
+[v8r] .cspell.json - SUCCESS - 0 error(s)
+[v8r] .jscpd.json - SUCCESS - 0 error(s)
+[32m✅ Linted [JSON] files with [v8r] successfully - (2.16s)[0m
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-JSON_V8R.log
+
+[1m### Processed [JSON] files[0m
+- Using [prettier v2.6.2] https://megalinter.github.io/v5/descriptors/json_prettier
+- MegaLinter key: [JSON_PRETTIER]
+- Rules config: identified by [prettier]
+[36m[prettier] .cspell.json - FIXED[0m
+[prettier] .jscpd.json
+[32m✅ Linted [JSON] files with [prettier] successfully - (0.59s)[0m
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-JSON_PRETTIER.log
+
+[1m### Processed [YAML] files[0m
+- Using [v8r v0.6.1] https://megalinter.github.io/v5/descriptors/yaml_v8r
+- MegaLinter key: [YAML_V8R]
+- Rules config: identified by [v8r]
+[v8r] .github/workflows/docker-build.yml - SUCCESS - 0 error(s)
+[v8r] .gitlab-ci.yml - SUCCESS - 0 error(s)
+[v8r] .mega-linter.yml - SUCCESS - 0 error(s)
+[v8r] .pre-commit-config.yaml - SUCCESS - 0 error(s)
+[32m✅ Linted [YAML] files with [v8r] successfully - (4.41s)[0m
+[Text Reporter] Generated TEXT report: /github/workspace/report/linters_logs/SUCCESS-YAML_V8R.log
+
++----SUMMARY-----+--------------------------+---------------+-------+-------+--------+--------------+
+| Descriptor     | Linter                   | Mode          | Files | Fixed | Errors | Elapsed time |
++----------------+--------------------------+---------------+-------+-------+--------+--------------+
+| ✅ ACTION      | actionlint               | list_of_files |     1 |       |      0 |        0.03s |
+| ✅ COPYPASTE   | jscpd                    | project       |   n/a |       |      0 |        1.16s |
+| ✅ CREDENTIALS | secretlint               | project       |   n/a |       |      0 |        0.88s |
+| ✅ DOCKERFILE  | dockerfilelint           | file          |     1 |       |      0 |        0.25s |
+| ✅ GIT         | git_diff                 | project       |   n/a |       |      0 |         0.0s |
+| ✅ JSON        | eslint-plugin-jsonc      | list_of_files |     2 |     0 |      0 |        0.95s |
+| ✅ JSON        | jsonlint                 | file          |     2 |       |      0 |        0.45s |
+| ✅ JSON        | prettier                 | list_of_files |     2 |     1 |      0 |        0.59s |
+| ✅ JSON        | v8r                      | file          |     2 |       |      0 |        2.16s |
+| ◬ MARKDOWN     | markdownlint             | list_of_files |     2 |     1 |      7 |        0.34s |
+| ✅ MARKDOWN    | markdown-link-check      | list_of_files |     2 |       |      0 |        0.77s |
+| ✅ MARKDOWN    | markdown-table-formatter | list_of_files |     2 |     1 |      0 |        0.32s |
+| ✅ SPELL       | cspell                   | list_of_files |    12 |       |      0 |        1.83s |
+| ✅ SPELL       | misspell                 | list_of_files |    12 |     1 |      0 |        0.06s |
+| ✅ YAML        | prettier                 | list_of_files |     4 |     1 |      0 |        1.13s |
+| ✅ YAML        | v8r                      | file          |     4 |       |      0 |        4.41s |
+| ✅ YAML        | yamllint                 | list_of_files |     4 |       |      0 |        0.18s |
++----------------+--------------------------+---------------+-------+-------+--------+--------------+
+
+[File.io Reporter] Reports are available at https://file.io/vXS2zZE4fBRD
+Identified PR#1 from environment
+[GitHub Comment Reporter] Posted summary as comment on jusmundi/docker-pgclient #PR1
+[Updated Sources Reporter] copied 3 fixed source files in folder /github/workspace/report/updated_sources.
+Download it from artifacts then copy-paste it in your local repo to apply linters updates
+[33m◬ Successfully linted all files, but with ignored errors[0m
