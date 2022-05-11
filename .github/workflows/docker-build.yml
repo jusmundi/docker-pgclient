@@ -38,15 +38,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      #- name: get-name
-      #  run: |
-      #      echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
-      #- name: print-name
-      #  run: |
-      #      echo "${{ env.REPO_NAME }}"
-
       - name: Build and push debug
-        run: echo "docker push ${{ env.OWNER }}/pgclient:latest,${{ github.event.repository.name }}::${{ github.sha }}"
+        run: echo "docker push ${{ env.OWNER }}/pgclient:latest,${{ github.event.repository.name }}:${{ github.sha }}"
         env:
           REPO: ${{ github.event.repository.name }}
           OWNER: ${{ github.event.repository.owner.login }}
@@ -69,7 +62,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ${{ github.event.repository.name }}/pgclient:latest
+          image-ref: ${{ env.OWNER }}/pgclient:latest
           format: "template"
           template: "@/contrib/sarif.tpl"
           output: "trivy-results.sarif"
@@ -78,6 +71,10 @@ jobs:
           ignore-unfixed: true
           vuln-type: "os,library"
           severity: "CRITICAL,HIGH"
+        env:
+          REPO: ${{ github.event.repository.name }}
+          OWNER: ${{ github.event.repository.owner.login }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v1
