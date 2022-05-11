@@ -65,6 +65,7 @@ hadolint Dockerfile
 ```bash
 npx mega-linter-runner --install
 npx mega-linter-runner
+npx v8r@latest .mega-linter.yml
 ```
 
 #### Check secret
