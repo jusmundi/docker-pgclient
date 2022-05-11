@@ -13,31 +13,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- toc -->
 
-* [Size 🌈](#size-%F0%9F%8C%88)
-- [[Unreleased]](#unreleased)
-- [[O.0.3] - TODO](#o03---todo)
-- [[0.0.2] - 2022-25-04](#002---2022-25-04)
-  * [Updated](#updated)
-- [[0.1.0] - 2022-13-04](#010---2022-13-04)
-  * [Added](#added)
-  * [Updated](#updated-1)
-  * [Remove](#remove)
-
 <!-- tocstop -->
 
 // spell-checker:enable
 
 ### Size 🌈
 
-// cSpell:words pgclient jusmundi
+// cSpell:words pgclient
 
 ## [Unreleased]
 
 <!--lint disable no-undefined-references-->
 
-## [O.0.3] - TODO
+## [0.1.1] - TODO
 
-## [0.0.2] - 2022-25-04
+## [0.1.0] - 2022-11-05
 
 Ubuntu 22.04
 
@@ -45,16 +35,20 @@ Ubuntu 22.04
 
 - Ubuntu 22.04
 
-`docker pull jusmundi/pgclient:0.1.0`
+```bash
+docker build --network=host -t "${DOCKER_ORGANISATION}/pgclient:0.1.0" --squash .
+docker push ${DOCKER_ORGANISATION}/pgclient:0.1.0
+```
 
-## [0.1.0] - 2022-13-04
+## [0.0.1] - 2022-13-04
 
 Ubuntu 20.04
 
-`docker pull jusmundi/pgclient:0.0.1`
+`docker pull ${DOCKER_ORGANISATION}/pgclient:0.0.1`
 
 ### Added
 
+// cSpell:words postgresql swift s3cmd
 - Add postgresql-client-10 postgresql-client-12 postgresql-client-14
 - Add upload tooling swift and s3cmd
 
@@ -64,9 +58,8 @@ Ubuntu 20.04
 
 ### Remove
 
-// cSpell:words pgclient
 - None
 
-`docker run -it -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro -v /var/run/docker.sock:/var/run/docker.sock --entrypoint /bin/bash jusmundi/pgclient:0.1.0`
+`docker run -it -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro -v /var/run/docker.sock:/var/run/docker.sock --entrypoint /bin/bash ${DOCKER_ORGANISATION}/pgclient:0.1.0`
 
 <!-- markdown-link-check-enable -->
