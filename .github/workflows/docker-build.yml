@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: 16
 
-      - name: Install bower
+      - name: Install npm package
         run: npm install -g markdown-toc@latest secretlint@latest
 
       - name: Set up Docker Buildx
@@ -49,22 +49,30 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          #password: ${{ secrets.GHCR_PAT }}  # ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push debug
-        run: echo "docker push ${{ env.OWNER }}/pgclient:latest,${{ github.event.repository.name }}:${{ github.sha }}"
+        run: echo "docker push ${{ env.OWNER }}/pgclient:latest,${{ github.repository }}:${{ github.sha }}"
 
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v3
         with:
-          context: .
+          #context: .
           #tags: ${{ github.event.repository.name }}/pgclient:latest,${{ env.OWNER }}/pgclient:latest
           tags: |
             ${{ env.OWNER }}/pgclient:latest
             ghcr.io/${{ env.OWNER }}/pgclient:latest
+          build-args: |
+              PG_MAJOR=14
+              BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+              GIT_SHA=${GITHUB_SHA::8}
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
+
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
@@ -88,3 +96,4 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+
