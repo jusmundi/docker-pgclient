@@ -20,6 +20,7 @@ DISABLE_LINTERS:
   - PYTHON_MYPY
   - PYTHON_PYRIGHT
   - PYTHON_PYLINT
+  - SPELL_CSPELL
 IGNORE_GITIGNORED_FILES: true
 FILTER_REGEX_EXCLUDE: (\.automation/test|\.automation/generated|\.github/workflows|\.venv/|\.direnv/|\.mypy_cache/|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES|tests)
 JSON_JSONLINT_FILTER_REGEX_EXCLUDE: (\.vscode/)
@@ -59,7 +60,7 @@ SARIF_REPORTER: true
 FILEIO_REPORTER: false
 VALIDATE_ALL_CODEBASE: false
 PLUGINS:
-  - https://raw.githubusercontent.com/nvuillam/mega-linter/master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
+  - https://raw.githubusercontent.com/oxsecurity/megalinter/master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 PRE_COMMANDS:
   - command: pip install flake8-cognitive-complexity
     venv: flake8 # Will be run within flake8 python virtualenv. There is one virtualenv per python-based linter, with the same name
