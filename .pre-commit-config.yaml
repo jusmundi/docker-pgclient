@@ -5,6 +5,8 @@ repos:
     rev: v4.4.0
     hooks:
       - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: check-ast
       - id: end-of-file-fixer
       - id: check-added-large-files
         args: ["--maxkb=123"]
@@ -13,26 +15,62 @@ repos:
             .pnp.cjs|
             package-lock.json|
             npm-shrinkwrap.json|
-            Pipfile.lock|
             poetry.lock
+            Pipfile.lock|
+
+            yarn.lock|
           )$
+      - id: check-builtin-literals
       - id: check-case-conflict
       - id: check-docstring-first
       - id: check-executables-have-shebangs
+        exclude: >
+          (?x)^(
+            .venv|
+            .direnv|
+          )$
+      - id: check-shebang-scripts-are-executable
       - id: check-json
-        exclude: ^.vscode/
+        exclude: >
+          (?x)^(
+            ^.vscode/|
+          )$
+      - id: check-symlinks
+      - id: check-toml
       - id: check-xml
       - id: check-yaml
+        args: [--allow-multiple-documents]
+        exclude: >
+          (?x)^(
+            .gitlab-ci.yml|
+            templates/.*.gitlab-ci.yml|  # because of !reference
+          )$
       - id: check-symlinks
       - id: check-merge-conflict
       - id: debug-statements
+        exclude: ^.cache/
       - id: detect-private-key
+        exclude: >
+          (?x)^(
+            README.md|
+          )$
       - id: double-quote-string-fixer
       - id: name-tests-test
+        exclude: >
+          (?x)^(
+            tests/.*|
+          )$
+      - id: no-commit-to-branch
+        args: [--branch, main, --branch, master, --branch, release/*]
       - id: end-of-file-fixer
+      - id: fix-byte-order-marker
       - id: fix-encoding-pragma
+        args: [--remove]
       - id: requirements-txt-fixer
       - id: sort-simple-yaml
+      - id: file-contents-sorter
+      - id: mixed-line-ending
+        args: [--fix=lf]
   - repo: https://github.com/pre-commit/pre-commit.git
     rev: v2.18.1
     hooks:
@@ -42,7 +80,7 @@ repos:
     hooks:
       - id: reorder-python-imports
   - repo: https://github.com/asottile/add-trailing-comma
-    rev: v2.2.3
+    rev: v2.3.0
     hooks:
       - id: add-trailing-comma
   - repo: https://github.com/doublify/pre-commit-hindent.git
@@ -53,11 +91,11 @@ repos:
     rev: 1.0.5
     hooks:
       - id: shell-lint
-        #entry: pre_commit_hooks/shell-lint.sh -x
         args: [-x]
         exclude: >
           (?x)^(
-              hooks|
+            hooks|
+            tests/.*|
           )$
   - repo: https://github.com/asottile/pyupgrade
     rev: v2.32.0
@@ -82,10 +120,12 @@ repos:
       - id: htmlhint
         args: [--config, .htmlhintrc]
       - id: htmllint
+        args: [--config, .htmlhintrc]
+        files: ^src/
       - id: markdown-toc
         args: [--maxdepth, "3", -i]
       - id: dockerfile_lint
-        args: [--json, --verbose, --dockerfile]
+        args: [--permissive, --verbose, --dockerfile, ./Dockerfile]
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.68.1
     hooks:

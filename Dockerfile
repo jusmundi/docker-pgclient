@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.2.1
 
-FROM ubuntu:22.04
+FROM ubuntu:22.10
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -24,7 +24,6 @@ RUN set -x \
   ssmtp \
   s3cmd \
   python3-swiftclient \
-  vim \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install --no-install-recommends -y locales && rm -rf /var/lib/apt/lists/* \
@@ -57,7 +56,7 @@ RUN ls -lrta /home/postgres/
 RUN ls -lrta /home/postgres/.gnupg
 
 #ADD gpg-agent.conf --chown=postgres:postgres /home/postgres/.gnupg/gpg-agent.conf
-ADD gpg-agent.conf /home/postgres/.gnupg/gpg-agent.conf
+COPY gpg-agent.conf /home/postgres/.gnupg/gpg-agent.conf
 RUN chown postgres:postgres /home/postgres/.gnupg/gpg-agent.conf
 
 USER postgres

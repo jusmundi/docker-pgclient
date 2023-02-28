@@ -42,7 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Updated
 
-- Update to fix CVE
+- Update to ubuntu:22.10 to fix CVE
 
 ## [0.1.0] - 2022-11-05
 
