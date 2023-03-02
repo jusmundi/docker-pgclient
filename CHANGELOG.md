@@ -15,7 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
   * [Size](#size)
 - [[Unreleased]](#unreleased)
-- [[0.1.1] - TODO](#011---todo)
+- [[0.1.2] - TODO](#012---todo)
+- [[0.1.1] - 2023-03-02](#011---2023-03-02)
   * [Updated](#updated)
 - [[0.1.0] - 2022-11-05](#010---2022-11-05)
   * [Updated](#updated-1)
@@ -32,17 +33,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 // cSpell:words pgclient
 
-🌈 Size is 359MB
+🌈 Size is 319MB
 
 ## [Unreleased]
 
 <!--lint disable no-undefined-references-->
 
-## [0.1.1] - TODO
+## [0.1.2] - TODO
+
+## [0.1.1] - 2023-03-02
 
 ### Updated
 
-- Update to ubuntu:22.10 to fix CVE
+- Update to ubuntu:22.10
+- `apt-get full-upgrade` to fix CVE
 
 ## [0.1.0] - 2022-11-05
 

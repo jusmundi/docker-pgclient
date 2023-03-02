@@ -14,7 +14,9 @@ ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
 
 RUN set -x \
-  && apt-get update && apt-get --no-install-recommends install -y \
+  && apt-get update && \
+  apt-get full-upgrade -y \
+  && apt-get --no-install-recommends install -y \
   ca-certificates \
   pinentry-tty \
   curl \
