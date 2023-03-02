@@ -1,10 +1,10 @@
 # syntax=docker/dockerfile:1.2.1
 
-FROM ubuntu:22.04
+FROM ubuntu:22.10
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-LABEL name="pgclient" version="0.1.0"
+LABEL name="pgclient" version="0.1.1"
 
 # Explicitly set user/group IDs
 RUN groupadd -r postgres --gid=999 && useradd -m -r -g postgres --uid=999 postgres
@@ -13,20 +13,22 @@ RUN groupadd -r postgres --gid=999 && useradd -m -r -g postgres --uid=999 postgr
 ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
 
-RUN set -x \
-	&& apt-get update && apt-get --no-install-recommends install -y \
-    ca-certificates \
-    pinentry-tty \
-    curl \
-    gnupg gnupg2 \
-    lsb-release \
-    gzip \
-    ssmtp \
-    s3cmd \
-    python3-swiftclient \
-    vim \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+# hadolint ignore=DL3008
+RUN apt-get update && \
+  apt-get full-upgrade -y \
+  && apt-get --no-install-recommends install -y \
+  ca-certificates \
+  pinentry-tty \
+  curl \
+  gnupg gnupg2 \
+  lsb-release \
+  gzip \
+  ssmtp \
+  s3cmd \
+  python3-swiftclient \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# hadolint ignore=DL3008
 RUN apt-get update && apt-get install --no-install-recommends -y locales && rm -rf /var/lib/apt/lists/* \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 ENV LANG en_US.utf8
@@ -41,9 +43,9 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg m
 
 # hadolint ignore=DL3008
 RUN set -x \
-	&& apt-get update && apt-get --no-install-recommends install -y \
-	postgresql-client-10 postgresql-client-12 postgresql-client-$PG_MAJOR \
-	&& apt-get clean && rm -rf /var/lib/apt/lists/*
+  && apt-get update && apt-get --no-install-recommends install -y \
+  postgresql-client-10 postgresql-client-12 postgresql-client-$PG_MAJOR \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER postgres
 
@@ -57,7 +59,7 @@ RUN ls -lrta /home/postgres/
 RUN ls -lrta /home/postgres/.gnupg
 
 #ADD gpg-agent.conf --chown=postgres:postgres /home/postgres/.gnupg/gpg-agent.conf
-ADD gpg-agent.conf /home/postgres/.gnupg/gpg-agent.conf
+COPY gpg-agent.conf /home/postgres/.gnupg/gpg-agent.conf
 RUN chown postgres:postgres /home/postgres/.gnupg/gpg-agent.conf
 
 USER postgres

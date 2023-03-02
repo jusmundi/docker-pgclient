@@ -32,10 +32,16 @@
 Code is [jusmundi/pgclient](https://github.com/jusmundi/docker-pgclient)
 
 ```bash
+sudo service docker restart
+make build
+```
+
+```bash
 export DOCKER_ORGANISATION=${DOCKER_ORGANISATION:-"jusmundi"}
 docker build --network=host -t "${DOCKER_ORGANISATION}/pgclient:0.1.0" --squash .
 docker run -ti "${DOCKER_ORGANISATION}/pgclient:0.1.0" bash
-docker push "${DOCKER_ORGANISATION}/pgclient:0.1.0"
+docker tag ghcr.io/jusmundi/pgclient:${OCI_TAG:-"latest"} ghcr.io/jusmundi/pgclient:0.1.1
+docker push "${DOCKER_ORGANISATION}/pgclient:0.1.1"
 ```
 
 Image uploaded to [jusmundi/pgclient](https://hub.docker.com/r/jusmundi/pgclient/tags)
