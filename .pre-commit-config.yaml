@@ -15,9 +15,8 @@ repos:
             .pnp.cjs|
             package-lock.json|
             npm-shrinkwrap.json|
-            poetry.lock
+            poetry.lock|
             Pipfile.lock|
-
             yarn.lock|
           )$
       - id: check-builtin-literals
@@ -71,40 +70,19 @@ repos:
       - id: file-contents-sorter
       - id: mixed-line-ending
         args: [--fix=lf]
-  - repo: https://github.com/pre-commit/pre-commit.git
-    rev: v2.18.1
-    hooks:
-      - id: validate_manifest
-  - repo: https://github.com/asottile/reorder_python_imports.git
-    rev: v3.0.1
-    hooks:
-      - id: reorder-python-imports
-  - repo: https://github.com/asottile/add-trailing-comma
-    rev: v2.3.0
-    hooks:
-      - id: add-trailing-comma
-  - repo: https://github.com/doublify/pre-commit-hindent.git
-    rev: b3680b6ebf9f7cf29b19307f246adef66756feef
-    hooks:
-      - id: hindent
-  - repo: https://github.com/detailyang/pre-commit-shell
-    rev: 1.0.5
-    hooks:
-      - id: shell-lint
-        args: [-x]
-        exclude: >
-          (?x)^(
-            hooks|
-            tests/.*|
-          )$
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v2.32.0
-    hooks:
-      - id: pyupgrade
   - repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: v1.6.0
+    rev: v2.0.1
     hooks:
       - id: autopep8
+  - repo: https://github.com/psf/black
+    rev: 22.12.0
+    hooks:
+      - id: black
+        # It is recommended to specify the latest version of Python
+        # supported by your project here, or alternatively use
+        # pre-commit's default_language_version, see
+        # https://pre-commit.com/#top_level-default_language_version
+        language_version: python3.9
   - repo: https://github.com/PyCQA/flake8
     rev: 6.0.0
     hooks:
@@ -114,6 +92,67 @@ repos:
     rev: v0.0.3
     hooks:
       - id: flake8-docker-not-for-production
+  - repo: https://github.com/asottile/reorder_python_imports.git
+    rev: v3.9.0
+    hooks:
+      - id: reorder-python-imports
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.3.1
+    hooks:
+      - id: pyupgrade
+  # - repo: https://github.com/pycqa/isort
+  #   rev: 5.10.1
+  #   hooks:
+  #     - id: isort
+  - repo: https://github.com/pre-commit/pre-commit.git
+    rev: v3.0.0
+    hooks:
+      - id: validate_manifest
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: v2.4.0
+    hooks:
+      - id: add-trailing-comma
+  - repo: https://github.com/willthames/ansible-lint.git
+    rev: v6.11.0
+    hooks:
+      - id: ansible-lint
+        files: \.(yaml|yml)$
+        exclude: >
+          (?x)^(
+            .travis.yml|
+            docker/|
+            requirements.yml|
+            .gitlab-ci.yml|
+          )$
+  - repo: https://github.com/doublify/pre-commit-hindent.git
+    rev: b3680b6ebf9f7cf29b19307f246adef66756feef
+    hooks:
+      - id: hindent
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.6.0-1
+    hooks:
+      # Choose one of:
+      # - id: shfmt         # native (requires Go to build)
+      - id: shfmt-docker  # Docker image (requires Docker to run)
+  - repo: https://github.com/detailyang/pre-commit-shell
+    rev: 1.0.5
+    hooks:
+      - id: shell-lint
+        args: [-x]
+        exclude: >
+          (?x)^(
+            modprobe.sh|
+            wrapdocker.sh|
+            dockerd-entrypoint.sh|
+            logger.sh|
+            biscuitcutter.sh|
+            hooks|
+            tests/.*|
+          )$
+  - repo: https://github.com/IamTheFij/ansible-pre-commit
+    rev: v0.1.2
+    hooks:
+      - id: encryption-check
   - repo: https://github.com/Lucas-C/pre-commit-hooks-nodejs
     rev: v1.1.2
     hooks:
@@ -126,6 +165,23 @@ repos:
         args: [--maxdepth, "3", -i]
       - id: dockerfile_lint
         args: [--permissive, --verbose, --dockerfile, ./Dockerfile]
+      #   always_run: true
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.10.0
+    hooks:
+      - id: hadolint-docker
+  # - repo: https://github.com/zricethezav/gitleaks
+  #   rev: v8.15.2
+  #   hooks:
+  #     - id: gitleaks-docker
+  #       entry: zricethezav/gitleaks protect --verbose --redact --staged
+  # - repo: https://github.com/bridgecrewio/checkov.git
+  #   rev: "2.2.120"
+  #   hooks:
+  #     - id: checkov
+  #       verbose: true
+  #       always_run: true
+  #       #args: [--soft-fail]
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.68.1
     hooks:
@@ -134,6 +190,9 @@ repos:
   - repo: https://github.com/oxsecurity/megalinter
     rev: v6.19.0
     hooks:
-      - id: megalinter-incremental # Faster, less thorough
+      - id: megalinter-incremental  # Faster, less thorough
         stages:
           - commit
+#   - id: megalinter-full  # Slower, more thorough
+#     stages:
+#       - push

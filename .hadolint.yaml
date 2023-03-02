@@ -1,6 +1,7 @@
 ---
 trustedRegistries:
   - docker.io
+  - registry.gitlab.com
 ignored:
   - DL3007
   - DL3016

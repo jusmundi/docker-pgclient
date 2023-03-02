@@ -2,8 +2,8 @@
 # Configuration file for MegaLinter
 # See all available variables at https://oxsecurity.github.io/megalinter/configuration/ and in linters documentation
 
-APPLY_FIXES: all # all, none, or list of linter keys
-DEFAULT_BRANCH: main # Usually master or main
+APPLY_FIXES: all  # all, none, or list of linter keys
+DEFAULT_BRANCH: main  # Usually master or main
 # ENABLE: # If you use ENABLE variable, all other languages/formats/tooling-formats will be disabled by default
 # ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
 DISABLE:
@@ -63,7 +63,7 @@ PLUGINS:
   - https://raw.githubusercontent.com/oxsecurity/megalinter/master/.automation/test/mega-linter-plugin-test/test.megalinter-descriptor.yml
 PRE_COMMANDS:
   - command: pip install flake8-cognitive-complexity
-    venv: flake8 # Will be run within flake8 python virtualenv. There is one virtualenv per python-based linter, with the same name
+    venv: flake8  # Will be run within flake8 python virtualenv. There is one virtualenv per python-based linter, with the same name
   # - command: echo "This is Mega-Linter PRE_COMMAND on own Mega-Linter ! :)"
   #   cwd: root
   - command: |-

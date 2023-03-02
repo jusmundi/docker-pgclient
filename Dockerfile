@@ -13,8 +13,8 @@ RUN groupadd -r postgres --gid=999 && useradd -m -r -g postgres --uid=999 postgr
 ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
 
-RUN set -x \
-  && apt-get update && \
+# hadolint ignore=DL3008
+RUN apt-get update && \
   apt-get full-upgrade -y \
   && apt-get --no-install-recommends install -y \
   ca-certificates \
@@ -28,6 +28,7 @@ RUN set -x \
   python3-swiftclient \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# hadolint ignore=DL3008
 RUN apt-get update && apt-get install --no-install-recommends -y locales && rm -rf /var/lib/apt/lists/* \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 ENV LANG en_US.utf8
