@@ -1,17 +1,18 @@
 <!-- markdown-link-check-disable-next-line -->
-## [![JusMundi](https://media-exp1.licdn.com/dms/image/C4D0BAQFkFSDZh9uBpg/company-logo_200_200/0/1519903803617?e=2147483647&v=beta&t=wAWk1qgiv69WUS_PyOx-7apQTDnJXvBnvMCBmqO9Tew)](https://gitlab.com/jusmundi-group/web/infrastructure) docker image with postgresql client for backup
+# [![JusMundi](https://media-exp1.licdn.com/dms/image/C4D0BAQFkFSDZh9uBpg/company-logo_200_200/0/1519903803617?e=2147483647&v=beta&t=wAWk1qgiv69WUS_PyOx-7apQTDnJXvBnvMCBmqO9Tew)](https://gitlab.com/jusmundi-group/web/infrastructure) docker image with postgresql client for backup
 
 1. connect postgresql db
 2. encrypt dump
 3. upload dump to ovh and scaleway
 
-# Table of contents
+## Table of contents
 
 <!-- markdown-link-check-disable -->
 
 <!-- toc -->
 
-- [Table of contents](#table-of-contents)
+- [ docker image with postgresql client for backup](#-docker-image-with-postgresql-client-for-backup)
+  - [Table of contents](#table-of-contents)
   - [Backup](#backup)
     - [Create docker backup postgresql client image](#create-docker-backup-postgresql-client-image)
     - [Check docker image quality](#check-docker-image-quality)
@@ -77,13 +78,13 @@ npx v8r@latest .mega-linter.yml
 
 #### Check secret
 
-```
+```shell
 npx @secretlint/quick-start "**/*"
 ```
 
 #### Check cspell
 
-```
+```shell
 npx cspell "**/*.{txt,js,md}"
 ```
 
@@ -92,7 +93,7 @@ npx cspell "**/*.{txt,js,md}"
 * [github-markdown-toc](https://github.com/jonschlinkert/markdown-toc)
 * With [github-markdown-toc](https://github.com/Lucas-C/pre-commit-hooks-nodejs)
 
-```
+```shell
 sudo npm install -g markdown-toc
 markdown-toc README.md -i
 markdown-toc CHANGELOG.md -i

@@ -21,6 +21,7 @@ DISABLE_LINTERS:
   - PYTHON_PYRIGHT
   - PYTHON_PYLINT
   - SPELL_CSPELL
+  - DOCKERFILE_HADOLINT
 IGNORE_GITIGNORED_FILES: true
 FILTER_REGEX_EXCLUDE: (\.automation/test|\.automation/generated|\.github/workflows|\.venv/|\.direnv/|\.mypy_cache/|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES|tests)
 JSON_JSONLINT_FILTER_REGEX_EXCLUDE: (\.vscode/)
