@@ -55,10 +55,6 @@ RUN id
 
 USER root
 
-RUN ls -lrta /home/postgres/
-RUN ls -lrta /home/postgres/.gnupg
-
-#ADD gpg-agent.conf --chown=postgres:postgres /home/postgres/.gnupg/gpg-agent.conf
 COPY gpg-agent.conf /home/postgres/.gnupg/gpg-agent.conf
 RUN chown postgres:postgres /home/postgres/.gnupg/gpg-agent.conf
 

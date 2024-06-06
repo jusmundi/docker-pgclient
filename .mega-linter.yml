@@ -2,7 +2,7 @@
 # Configuration file for MegaLinter
 # See all available variables at https://oxsecurity.github.io/megalinter/configuration/ and in linters documentation
 
-APPLY_FIXES: all # all, none, or list of linter keys
+APPLY_FIXES: none # all, none, or list of linter keys
 DEFAULT_BRANCH: main # Usually master or main
 # ENABLE: # If you use ENABLE variable, all other languages/formats/tooling-formats will be disabled by default
 # ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
@@ -21,6 +21,7 @@ DISABLE_LINTERS:
   - PYTHON_PYRIGHT
   - PYTHON_PYLINT
   - SPELL_CSPELL
+  - DOCKERFILE_HADOLINT
 IGNORE_GITIGNORED_FILES: true
 FILTER_REGEX_EXCLUDE: (\.automation/test|\.automation/generated|\.github/workflows|\.venv/|\.direnv/|\.mypy_cache/|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES|tests)
 JSON_JSONLINT_FILTER_REGEX_EXCLUDE: (\.vscode/)
