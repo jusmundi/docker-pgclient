@@ -1,6 +1,6 @@
-# syntax=docker/dockerfile:1.2.1
+# syntax=docker/dockerfile:1.7
 
-FROM ubuntu:22.10
+FROM ubuntu:22.04
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -35,7 +35,7 @@ ENV LANG en_US.utf8
 
 ### POSTGRESQL
 
-ENV PG_MAJOR 14
+ENV PG_MAJOR 16
 
 # Add the PostgreSQL PGP key to verify their Debian packages.
 RUN curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
@@ -44,7 +44,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg m
 # hadolint ignore=DL3008
 RUN set -x \
   && apt-get update && apt-get --no-install-recommends install -y \
-  postgresql-client-10 postgresql-client-12 postgresql-client-$PG_MAJOR \
+  postgresql-client-$PG_MAJOR \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER postgres
@@ -71,7 +71,7 @@ RUN gpg2 -K
 
 WORKDIR /tmp
 
-CMD ["/bin/bash"]
+ENTRYPOINT ["/bin/bash"]
 HEALTHCHECK NONE
 
 # dockerfile_lint - ignore
