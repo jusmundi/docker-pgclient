@@ -11,7 +11,7 @@
 
 <!-- toc -->
 
-- [ docker image with postgresql client for backup](#-docker-image-with-postgresql-client-for-backup)
+- [docker image with postgresql client for backup](#-docker-image-with-postgresql-client-for-backup)
   - [Table of contents](#table-of-contents)
   - [Backup](#backup)
     - [Create docker backup postgresql client image](#create-docker-backup-postgresql-client-image)
