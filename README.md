@@ -9,19 +9,20 @@
 
 <!-- markdown-link-check-disable -->
 
-// spell-checker:disable
-
 <!-- toc -->
 
-- [Backup](#backup)
-  * [Create docker backup postgresql client image](#create-docker-backup-postgresql-client-image)
-  * [Check docker image quality](#check-docker-image-quality)
-  * [Update README.md](#update-readmemd)
-  * [TODO postgresql migration](#todo-postgresql-migration)
+- [Table of contents](#table-of-contents)
+  - [Backup](#backup)
+    - [Create docker backup postgresql client image](#create-docker-backup-postgresql-client-image)
+    - [Check docker image quality](#check-docker-image-quality)
+      - [Docker dive](#docker-dive)
+      - [Docker linter](#docker-linter)
+      - [mega-linter](#mega-linter)
+      - [Check secret](#check-secret)
+      - [Check cspell](#check-cspell)
+    - [Update README.md](#update-readmemd)
 
 <!-- tocstop -->
-
-// spell-checker:enable
 
 <!-- markdown-link-check-enable -->
 
@@ -98,11 +99,3 @@ markdown-toc CHANGELOG.md -i
 sudo npm install -g markdown-link-check
 markdown-link-check ./README.md
 ```
-
-### TODO postgresql migration
-
-  postgresql 14 -> alertapi
-
-  postgresql 10 -> back --> to migrate
-
-  postgresql 12 -> scraper --> 2 bases to migrate
