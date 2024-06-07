@@ -23,6 +23,7 @@ RUN apt-get update && \
   gnupg gnupg2 \
   lsb-release \
   gzip \
+  zip \
   ssmtp \
   s3cmd \
   python3-swiftclient \
