@@ -18,17 +18,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - [Table of contents](#table-of-contents)
     - [Size](#size)
   - [\[Unreleased\]](#unreleased)
-  - [\[0.1.3\] - 2024-06-07](#013---2024-06-07)
+  - [\[0.1.4\] - 2024-06-07](#014---2024-06-07)
     - [Updated](#updated)
-  - [\[0.1.2\] - 2024-06-07](#012---2024-06-07)
+  - [\[0.1.3\] - 2024-06-07](#013---2024-06-07)
     - [Updated](#updated-1)
-  - [\[0.1.1\] - 2023-03-02](#011---2023-03-02)
+  - [\[0.1.2\] - 2024-06-07](#012---2024-06-07)
     - [Updated](#updated-2)
-  - [\[0.1.0\] - 2022-11-05](#010---2022-11-05)
+  - [\[0.1.1\] - 2023-03-02](#011---2023-03-02)
     - [Updated](#updated-3)
+  - [\[0.1.0\] - 2022-11-05](#010---2022-11-05)
+    - [Updated](#updated-4)
   - [\[0.0.1\] - 2022-13-04](#001---2022-13-04)
     - [Added](#added)
-    - [Updated](#updated-4)
+    - [Updated](#updated-5)
     - [Remove](#remove)
 
 <!-- tocstop -->
@@ -44,6 +46,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 <!--lint disable no-undefined-references-->
+
+## [0.1.4] - 2024-06-07
+
+### Updated
+
+- Add `unzip` package
 
 ## [0.1.3] - 2024-06-07
 

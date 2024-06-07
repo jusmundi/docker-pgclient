@@ -4,7 +4,7 @@ FROM ubuntu:22.04
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-LABEL name="pgclient" version="0.1.3"
+LABEL name="pgclient" version="0.1.4"
 
 # Explicitly set user/group IDs
 RUN groupadd -r postgres --gid=999 && useradd -m -r -g postgres --uid=999 postgres
@@ -24,6 +24,7 @@ RUN apt-get update && \
   lsb-release \
   gzip \
   zip \
+  unzip \
   ssmtp \
   s3cmd \
   python3-swiftclient \
