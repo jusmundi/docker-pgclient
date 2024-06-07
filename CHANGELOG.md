@@ -39,7 +39,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!--lint disable no-undefined-references-->
 
-## [0.1.2] - TODO
+## [0.1.3] - TODO
+
+## [0.1.2] - 2024-06-07
+
+### Updated
+
+- Upgrade to postgres 16
 
 ## [0.1.1] - 2023-03-02
 
