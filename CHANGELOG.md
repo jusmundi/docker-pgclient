@@ -14,16 +14,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <!-- toc -->
 
 * [Size](#size)
-- [[Unreleased]](#unreleased)
-- [[0.1.2] - TODO](#012---todo)
-- [[0.1.1] - 2023-03-02](#011---2023-03-02)
-  * [Updated](#updated)
-- [[0.1.0] - 2022-11-05](#010---2022-11-05)
-  * [Updated](#updated-1)
-- [[0.0.1] - 2022-13-04](#001---2022-13-04)
-  * [Added](#added)
-  * [Updated](#updated-2)
-  * [Remove](#remove)
+- [Changelog](#changelog)
+  - [Table of contents](#table-of-contents)
+    - [Size](#size)
+  - [\[Unreleased\]](#unreleased)
+  - [\[0.1.3\] - 2024-06-07](#013---2024-06-07)
+    - [Updated](#updated)
+  - [\[0.1.2\] - 2024-06-07](#012---2024-06-07)
+    - [Updated](#updated-1)
+  - [\[0.1.1\] - 2023-03-02](#011---2023-03-02)
+    - [Updated](#updated-2)
+  - [\[0.1.0\] - 2022-11-05](#010---2022-11-05)
+    - [Updated](#updated-3)
+  - [\[0.0.1\] - 2022-13-04](#001---2022-13-04)
+    - [Added](#added)
+    - [Updated](#updated-4)
+    - [Remove](#remove)
 
 <!-- tocstop -->
 
@@ -39,7 +45,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!--lint disable no-undefined-references-->
 
-## [0.1.3] - TODO
+## [0.1.3] - 2024-06-07
+
+### Updated
+
+- Add `zip` package
 
 ## [0.1.2] - 2024-06-07
 
