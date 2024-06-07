@@ -40,10 +40,10 @@ make build
 
 ```bash
 export DOCKER_ORGANISATION=${DOCKER_ORGANISATION:-"jusmundi"}
-docker build --network=host -t "${DOCKER_ORGANISATION}/pgclient:0.1.0" --squash .
-docker run -ti "${DOCKER_ORGANISATION}/pgclient:0.1.0" bash
-docker tag ghcr.io/jusmundi/pgclient:${OCI_TAG:-"latest"} ghcr.io/jusmundi/pgclient:0.1.1
-docker push "${DOCKER_ORGANISATION}/pgclient:0.1.1"
+docker build --network=host -t "${DOCKER_ORGANISATION}/pgclient:0.1.2" --squash .
+docker run -ti "${DOCKER_ORGANISATION}/pgclient:0.1.2" bash
+docker tag ghcr.io/jusmundi/pgclient:${OCI_TAG:-"latest"} ghcr.io/jusmundi/pgclient:0.1.2
+docker push "${DOCKER_ORGANISATION}/pgclient:0.1.2"
 ```
 
 Image uploaded to [jusmundi/pgclient](https://hub.docker.com/r/jusmundi/pgclient/tags)
@@ -53,7 +53,7 @@ Image uploaded to [jusmundi/pgclient](https://hub.docker.com/r/jusmundi/pgclient
 #### Docker dive
 
 ```bash
-dive --ci --json docker-dive-stats.json "${DOCKER_ORGANISATION}/pgclient:0.1.0" 1>docker-dive.log 2>docker-dive-error.log
+dive --ci --json docker-dive-stats.json "${DOCKER_ORGANISATION}/pgclient:0.1.2" 1>docker-dive.log 2>docker-dive-error.log
 ```
 
 #### Docker linter
