@@ -4,7 +4,7 @@ FROM ubuntu:22.04
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-LABEL name="pgclient" version="0.1.4"
+LABEL name="pgclient" version="0.1.5"
 
 # Explicitly set user/group IDs
 RUN groupadd -r postgres --gid=999 && useradd -m -r -g postgres --uid=999 postgres
@@ -37,7 +37,7 @@ ENV LANG en_US.utf8
 
 ### POSTGRESQL
 
-ENV PG_MAJOR 16
+ENV PG_MAJOR 18
 
 # Add the PostgreSQL PGP key to verify their Debian packages.
 RUN curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -

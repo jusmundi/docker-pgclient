@@ -47,6 +47,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!--lint disable no-undefined-references-->
 
+## [0.1.5] - 2026-01-29
+
+### Updated
+
+- Upgrade to PostgreSQL 18
+
 ## [0.1.4] - 2024-06-07
 
 ### Updated

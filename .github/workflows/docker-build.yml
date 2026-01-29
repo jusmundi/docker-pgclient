@@ -69,7 +69,7 @@ jobs:
             ${{ env.OWNER }}/pgclient:latest
             ghcr.io/${{ env.OWNER }}/pgclient:latest
           build-args: |
-              PG_MAJOR=14
+              PG_MAJOR=18
               BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
               GIT_SHA=${GITHUB_SHA::8}
           # build on feature branches, push only on main branch
