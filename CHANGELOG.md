@@ -52,6 +52,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Updated
 
 - Upgrade to PostgreSQL 18
+- Upgrade Ubuntu base image from 22.04 to 24.04
+- Update PostgreSQL PGP key setup to use modern signed-by approach (fixes deprecated apt-key warning)
 
 ## [0.1.4] - 2024-06-07
 
