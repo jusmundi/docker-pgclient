@@ -1,10 +1,10 @@
-# syntax=docker/dockerfile:1.7
+# syntax=docker/dockerfile:1
 
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-LABEL name="pgclient" version="0.1.4"
+LABEL name="pgclient" version="0.1.5"
 
 # Explicitly set user/group IDs
 RUN groupadd -r postgres --gid=999 && useradd -m -r -g postgres --uid=999 postgres
@@ -20,7 +20,8 @@ RUN apt-get update && \
   ca-certificates \
   pinentry-tty \
   curl \
-  gnupg gnupg2 \
+  gnupg \
+  gnupg2 \
   lsb-release \
   gzip \
   zip \
@@ -28,20 +29,30 @@ RUN apt-get update && \
   ssmtp \
   s3cmd \
   python3-swiftclient \
+  postgresql-common \
+  && update-ca-certificates \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install --no-install-recommends -y locales && rm -rf /var/lib/apt/lists/* \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-ENV LANG en_US.utf8
+
+ENV LANG=en_US.utf8
 
 ### POSTGRESQL
 
-ENV PG_MAJOR 16
+ENV PG_MAJOR=18
 
-# Add the PostgreSQL PGP key to verify their Debian packages.
-RUN curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main $PG_MAJOR" > /etc/apt/sources.list.d/pgdg.list
+# Add PostgreSQL PGDG APT repository
+RUN install -d /usr/share/postgresql-common/pgdg \
+    && curl -k -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc \
+       | gpg --dearmor -o /usr/share/postgresql-common/pgdg/pgdg.gpg \
+    && echo "deb [signed-by=/usr/share/postgresql-common/pgdg/pgdg.gpg] \
+       https://apt.postgresql.org/pub/repos/apt \
+       $(lsb_release -cs)-pgdg main" \
+       > /etc/apt/sources.list.d/pgdg.list
+
+RUN /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y "$(lsb_release -cs)"
 
 # hadolint ignore=DL3008
 RUN set -x \

@@ -47,6 +47,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!--lint disable no-undefined-references-->
 
+## [0.1.5] - 2026-01-29
+
+### Updated
+
+- Upgrade to PostgreSQL 18
+- Upgrade Ubuntu base image from 22.04 to 24.04
+- Update PostgreSQL PGP key setup to use modern signed-by approach (fixes deprecated apt-key warning)
+- Upgrade all GitHub Actions to latest versions:
+  - `actions/checkout@v6`
+  - `actions/setup-node@v4` with Node.js 20
+  - `actions/upload-artifact@v4`
+  - `docker/setup-buildx-action@v3`
+  - `docker/login-action@v3`
+  - `docker/build-push-action@v5`
+  - `aquasecurity/trivy-action@0.33.1`
+  - `github/codeql-action/upload-sarif@v3`
+  - `oxsecurity/megalinter@v7`
+  - `peter-evans/create-pull-request@v6`
+  - `stefanzweifel/git-auto-commit-action@v5`
+
+### Fixed
+
+- Add `update-ca-certificates` command to fix SSL certificate verification issues when downloading PostgreSQL GPG key
+
 ## [0.1.4] - 2024-06-07
 
 ### Updated
