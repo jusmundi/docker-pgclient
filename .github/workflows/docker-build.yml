@@ -3,6 +3,11 @@
 
 name: Docker CI
 
+permissions:
+  contents: read
+  packages: write
+  security-events: write
+
 on:
   push:
     branches: [main]
