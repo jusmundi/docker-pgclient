@@ -44,6 +44,7 @@ ENV LANG=en_US.utf8
 ENV PG_MAJOR=18
 
 # Add PostgreSQL PGDG APT repository
+# checkov:skip=CKV_DOCKER_9: PostgreSQL PGDG repository is required for official PostgreSQL packages
 RUN install -d /usr/share/postgresql-common/pgdg \
     && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc \
        | gpg --dearmor -o /usr/share/postgresql-common/pgdg/pgdg.gpg \
