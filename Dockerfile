@@ -45,7 +45,7 @@ ENV PG_MAJOR=18
 
 # Add PostgreSQL PGDG APT repository
 RUN install -d /usr/share/postgresql-common/pgdg \
-    && curl -k -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc \
+    && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc \
        | gpg --dearmor -o /usr/share/postgresql-common/pgdg/pgdg.gpg \
     && echo "deb [signed-by=/usr/share/postgresql-common/pgdg/pgdg.gpg] \
        https://apt.postgresql.org/pub/repos/apt \
