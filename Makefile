@@ -9,7 +9,6 @@ ME            = $(shell whoami)
 
 # Image
 APP_NAME     = pgclient
-# 783876277037.dkr.ecr.eu-west-3.amazonaws.com
 OCI_REGISTRY = ghcr.io/jusmundi
 AWS_REGION   = eu-west-3
 OCI_IMAGE := $(OCI_REGISTRY)/$(APP_NAME)
@@ -68,26 +67,14 @@ clean: clean-docker
 .PHONY: build-docker
 build-docker:  ## Build container with docker
 	@echo "=> Building image..."
-	dive build -t $(IMAGE) --squash .
+	docker build -t $(IMAGE) .
 
 ## —— Docker Slim 🐳 ————————————————————————————————————————————————————————————————
 .PHONY: build-docker-slim
 build-docker-slim:  ## Build container with docker-slim
 	@echo "=> Building image..."
-	@echo "docker-slim build --target $(IMAGE) --http-probe=my/sample-app"
+	@echo "docker-slim build --target $(IMAGE) --http-probe=false"
 	docker-slim build --continue-after --target $(IMAGE) --http-probe=false
-
-## —— Buildah Docker 🐶🐳 ————————————————————————————————————————————————————————————————
-.PHONY: build-buildah-docker
-build-buildah-docker: ## Build container with buildah
-	@echo "=> Building image..."
-	buildah bud -t $(IMAGE) .
-
-## —— Buildah 🐶 ————————————————————————————————————————————————————————————————
-.PHONY: build-buildah
-build-buildah: ## Build container with buildah
-	@echo "=> Building image..."
-	./build-oci.sh
 
 ## —— Build 🚀 —————————————————————————————————————————————————————————————————
 .PHONY: build
@@ -142,24 +129,6 @@ exec: ## Run container
 	@echo "=> Executing image..."
 	docker run -it -u 1000:1000 -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro -v /var/run/docker.sock:/var/run/docker.sock $(IMAGE)
 
-## —— Tests Dive 🧪🐳🚨 —————————————————————————————————————————————————————————————————
-.PHONY: test-dive
-test-dive: ## Run Dive image tests
-	@echo "=> Testing Dive image..."
-	@echo "CI=true dive --ci --highestUserWastedPercent 0.1 --lowestEfficiency 0.9 --json docker-dive-stats.json $(IMAGE) 1>docker-dive.log 2>docker-dive-error.log"
-	CI=true docker run --rm -it \
-      -v /var/run/docker.sock:/var/run/docker.sock \
-      -v "$(pwd)":"$(pwd)" \
-      -w "$(pwd)" \
-      -v "$(pwd)/.dive.yaml":"$(pwd)/.dive.yaml" \
-      wagoodman/dive:latest --ci --json docker-dive-stats.json $(IMAGE)
-
-## —— Tests Dive CI 🧪🐳🚨 —————————————————————————————————————————————————————————————————
-.PHONY: test-dive-ci
-test-dive-ci: ## Run Dive image tests for CI
-	@echo "=> Testing Dive image..."
-	CI=true dive --ci --highestUserWastedPercent 0.1 --lowestEfficiency 0.9 --json docker-dive-stats.json $(IMAGE)
-
 ## —— Tests Codeclimate 🧪🤖 —————————————————————————————————————————————————————————————————
 .PHONY: test-codeclimate
 test-codeclimate:
@@ -202,15 +171,6 @@ sast-fs-docker:
 	@echo "=> Scanning trivy filesystem..."
 	time trivy filesystem --exit-code 2 --severity $(CS_SEVERITY_REPORT_THRESHOLD) $(TRIVY_GLOBAL_SECURITY_CHECKS) $(TRIVY_ARGS) --format table --output scan-report-fs.md . 1>docker-trivy-fs.log 2>docker-trivy-fs-error.log
 
-## —— Tests Sast Buildah 👮😈🐶 —————————————————————————————————————————————————————————————————
-.PHONY: sast-buildah
-sast-buildah:
-	@echo "=> Scanning trivy image..."
-	rm -Rf "./archive/" || true
-	mkdir "./archive/" || true
-	buildah push $(IMAGE) docker-archive:./archive/built-with-buildah.tar:latest
-	time trivy image --exit-code 1 --severity $(CS_SEVERITY_REPORT_THRESHOLD) $(TRIVY_GLOBAL_SECURITY_CHECKS) $(TRIVY_ARGS) --format table --output scan-report.md --input ./archive/built-with-buildah.tar 1>docker-trivy.log 2>docker-trivy-error.log
-
 ## —— Tests 👮😈 —————————————————————————————————————————————————————————————————
 .PHONY: sast
 sast: sast-fs-docker ## Run Trivy sast
@@ -225,15 +185,6 @@ deploy-docker: ## Push to registry
 	@echo "=> Pushing image..."
 	@echo "=> By Hand 👊 => docker push $(OCI_IMAGE):$(IMAGE_NEXT_TAG)"
 	@echo "=> By Hand ✌ => docker push $(OCI_IMAGE):latest"
-
-## —— Deploy Buildah 💾🐶 ———————————————————————————————————————————————————————————————
-.PHONY: deploy-buildah
-deploy-buildah: ## Push to registry
-	@echo "=> Tagging image..."
-	buildah tag $(IMAGE) $(OCI_IMAGE):$(IMAGE_NEXT_TAG)
-	@echo "=> Pushing image..."
-	@echo "=> By Hand 👊 => buildah push $(OCI_IMAGE):$(IMAGE_NEXT_TAG)"
-	@echo "=> By Hand ✌ => buildah push $(OCI_IMAGE):latest"
 
 ## —— Deploy 💾👑 ———————————————————————————————————————————————————————————————
 .PHONY: deploy
