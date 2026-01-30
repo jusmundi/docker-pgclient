@@ -55,6 +55,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgrade Ubuntu base image from 22.04 to 24.04
 - Update PostgreSQL PGP key setup to use modern signed-by approach (fixes deprecated apt-key warning)
 
+### Fixed
+
+- Add `update-ca-certificates` command to fix SSL certificate verification issues when downloading PostgreSQL GPG key
+
 ## [0.1.4] - 2024-06-07
 
 ### Updated

@@ -28,6 +28,7 @@ RUN apt-get update && \
   ssmtp \
   s3cmd \
   python3-swiftclient \
+  && update-ca-certificates \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # hadolint ignore=DL3008
