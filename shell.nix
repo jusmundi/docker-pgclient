@@ -2,9 +2,7 @@
 
 pkgs.mkShellNoCC {
   packages = with pkgs; [
-    ansible
-    terraform
-    nomad
+    docker
     git
     cowsay
   ];

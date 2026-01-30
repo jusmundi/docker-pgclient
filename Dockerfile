@@ -36,20 +36,12 @@ RUN apt-get update && \
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install --no-install-recommends -y locales && rm -rf /var/lib/apt/lists/* \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-    
+
 ENV LANG=en_US.utf8
 
 ### POSTGRESQL
 
 ENV PG_MAJOR=18
-
-# Add the PostgreSQL PGP key to verify their Debian packages.
-# Use the modern signed-by approach instead of deprecated apt-key
-# RUN curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /usr/share/keyrings/postgresql.gpg
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCC7D46ACCC4CF8
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA16FCBCA621E701
-# RUN curl -k -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail https://www.postgresql.org/media/keys/ACCC4CF8.asc
-# RUN echo "deb [signed-by=/usr/share/keyrings/postgresql.gpg] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
 
 # Add PostgreSQL PGDG APT repository
 RUN install -d /usr/share/postgresql-common/pgdg \
@@ -59,20 +51,14 @@ RUN install -d /usr/share/postgresql-common/pgdg \
        https://apt.postgresql.org/pub/repos/apt \
        $(lsb_release -cs)-pgdg main" \
        > /etc/apt/sources.list.d/pgdg.list
-     
-# RUN /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y $(lsb_release -cs)
-RUN /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y noble
 
-# Install PostgreSQL client 18
-RUN apt-get update && apt-get install -y \
-    postgresql-client-18 \
-    && rm -rf /var/lib/apt/lists/*    
-        
+RUN /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y "$(lsb_release -cs)"
+
 # hadolint ignore=DL3008
-# RUN set -x \
-#   && apt-get update && apt-get --no-install-recommends install -y \
-#   postgresql-client-$PG_MAJOR \
-#   && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN set -x \
+  && apt-get update && apt-get --no-install-recommends install -y \
+  postgresql-client-$PG_MAJOR \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER postgres
 
